@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     private CharacterController _characterController;
 
-    public float MovementSpeed = 10f, RotationSpeed = 10f, JumpForce=10f, Gravity = -30f;
+    public float MovementSpeed = 7f, RotationSpeed = 10f, JumpForce=10f, Gravity = -30f, sensitivity = 10f;
 
     private float _rotationY;
     private float _rotationX;
@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
 
     public void Rotate(Vector2 rotationVector)
     {
-        _rotationY += rotationVector.x * RotationSpeed * Time.deltaTime;
-        _rotationX += rotationVector.y * RotationSpeed * Time.deltaTime;
+        _rotationY += rotationVector.x * RotationSpeed * sensitivity *Time.deltaTime;
+        _rotationX += rotationVector.y * RotationSpeed * sensitivity *Time.deltaTime;
         _rotationX = Mathf.Clamp(_rotationX, -90f, 90f);
         transform.localRotation = Quaternion.Euler(-_rotationX, _rotationY, 0f);
     }
